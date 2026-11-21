@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Of Cafe | Premium Cloud Kitchen & Food Delivery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff8eb',
+                            100: '#ffefc6',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Sticky Glassmorphic Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div>
+                        <span class="font-display font-bold text-xl sm:text-2xl text-white tracking-tight">Taste Of <span class="text-amber-400">Cafe</span></span>
+                        <span class="hidden sm:block text-[10px] uppercase tracking-widest text-slate-400">Fresh • Fast • Authentic</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors">Home</a>
+                    <a href="#menu" class="text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors">Explore Menu</a>
+                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors">About Us</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Cart Trigger & Mobile Menu Button -->
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleCart()" class="relative flex items-center gap-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold px-4 py-2.5 rounded-xl transition-all shadow-md hover:shadow-amber-500/25 active:scale-95">
+                        <i class="fas fa-shopping-bag text-base"></i>
+                        <span class="hidden sm:inline text-sm">Cart</span>
+                        <span id="cartCount" class="bg-slate-900 text-amber-400 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                    </button>
+
+                    <!-- Mobile Nav Toggle -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-colors" aria-label="Toggle Menu">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-4 pt-2 pb-4 space-y-1">
+            <a href="#home" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Home</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Explore Menu</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">About Us</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section id="home" class="relative pt-24 pb-16 sm:pt-32 sm:pb-24 bg-slate-900 overflow-hidden">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 opacity-30">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80" alt="Gourmet Food Spread" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-slate-900/60"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-medium mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Free Delivery on Orders Above ₹499 • 30-Min Express Dispatch
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+                Craving Something Extraordinary? <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Delivered Hot & Fresh.</span>
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                Handcrafted pizzas, aromatic Hyderabadi biryani, sizzling street-style noodles, and artisanal desserts—prepared fresh in our cloud kitchen and delivered straight to your doorstep.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-base shadow-lg shadow-orange-500/25 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <span>Order Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all">
+                    Our Kitchen Story
+                </a>
+            </div>
+
+            <!-- Quick Trust Metrics -->
+            <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto mt-14 pt-8 border-t border-slate-800/80">
+                <div>
+                    <div class="font-display text-2xl sm:text-3xl font-bold text-white">4.9 <span class="text-amber-400 text-xl">★</span></div>
+                    <div class="text-xs sm:text-sm text-slate-400">Customer Rating</div>
+                </div>
+                <div>
+                    <div class="font-display text-2xl sm:text-3xl font-bold text-white">25 Min</div>
+                    <div class="text-xs sm:text-sm text-slate-400">Avg. Delivery Time</div>
+                </div>
+                <div>
+                    <div class="font-display text-2xl sm:text-3xl font-bold text-white">100%</div>
+                    <div class="text-xs sm:text-sm text-slate-400">Hygienic Packaging</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Catalog Section -->
+    <section id="menu" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Curated Menu</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Signature Dishes & Combos</h2>
+                <p class="text-slate-500 text-sm sm:text-base mt-2">Filter by category or search your favorite dish below.</p>
+            </div>
+
+            <!-- Live Search Bar -->
+            <div class="relative w-full md:w-80">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input type="text" id="searchInput" oninput="filterMenu()" placeholder="Search pizza, biryani, noodles..." class="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent shadow-sm">
+            </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div id="categoryFilters" class="flex items-center gap-2.5 overflow-x-auto pb-4 mb-8 no-scrollbar">
+            <button onclick="setCategory('All')" data-category="All" class="category-btn active px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap bg-slate-900 text-white shadow-sm transition-all">
+                All Items
+            </button>
+            <button onclick="setCategory('Indian')" data-category="Indian" class="category-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap bg-white text-slate-600 border border-slate-200 hover:border-amber-500 transition-all">
+                🍛 Indian Specials
+            </button>
+            <button onclick="setCategory('Fast Food')" data-category="Fast Food" class="category-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap bg-white text-slate-600 border border-slate-200 hover:border-amber-500 transition-all">
+                🍔 Burgers & Wraps
+            </button>
+            <button onclick="setCategory('Italian & Asian')" data-category="Italian & Asian" class="category-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap bg-white text-slate-600 border border-slate-200 hover:border-amber-500 transition-all">
+                🍕 Pizza, Pasta & Noodles
+            </button>
+            <button onclick="setCategory('Desserts')" data-category="Desserts" class="category-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap bg-white text-slate-600 border border-slate-200 hover:border-amber-500 transition-all">
+                🍨 Desserts
+            </button>
+        </div>
+
+        <!-- Dynamic Menu Grid -->
+        <div id="menuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+            <!-- Cards injected via JavaScript -->
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="emptyMenuState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200">
+            <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mx-auto text-2xl mb-4">
+                <i class="fas fa-search"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-slate-900">No matching dishes found</h3>
+            <p class="text-slate-500 text-sm mt-1 mb-5">Try clearing your search term or selecting another category.</p>
+            <button onclick="resetFilters()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold text-sm transition-colors">
+                Reset Filters
+            </button>
+        </div>
+    </section>
+
+    <!-- About & Why Choose Us Section -->
+    <section id="about" class="py-16 sm:py-24 bg-white border-y border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1000&q=80" alt="Chef preparing gourmet meal" class="rounded-3xl shadow-xl w-full h-[380px] object-cover">
+                    <div class="absolute -bottom-6 -right-4 sm:right-6 bg-slate-900 text-white p-5 rounded-2xl shadow-xl border border-slate-800 max-w-xs">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <div class="font-display font-bold text-sm">FSSAI Certified Kitchen</div>
+                                <div class="text-xs text-slate-400">100% Freshly Sourced Ingredients</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">About Taste Of Cafe</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-5">Crafted with Passion, Delivered with Speed.</h2>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        At Taste Of Cafe, we blend authentic Indian spices with global cafe favorites. Every dish is cooked to order in temperature-monitored kitchens and packed in eco-friendly, tamper-proof containers so your meal arrives piping hot.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Express 30-Min Delivery</h4>
+                                <p class="text-xs text-slate-500 mt-1">Live dispatch tracking from kitchen to doorstep.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Zero Preservatives</h4>
+                                <p class="text-xs text-slate-500 mt-1">Farm-fresh vegetables, dairy & spices daily.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <footer id="contact" class="bg-slate-950 text-slate-300 pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-bold">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <span class="font-display font-bold text-xl text-white">Taste Of <span class="text-amber-400">Cafe</span></span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Your neighborhood gourmet cloud kitchen delivering fresh meals, snacks, and desserts across the city from 10:00 AM to 11:30 PM.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="#contact" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#contact" aria-label="Twitter" class="w-9 h-9 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#contact" aria-label="WhatsApp" class="w-9 h-9 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 flex items-center justify-center transition-colors"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-white text-base mb-4">Quick Links</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-400">
+                        <li><a href="#home" class="hover:text-amber-400 transition-colors">Home</a></li>
+                        <li><a href="#menu" class="hover:text-amber-400 transition-colors">Full Menu</a></li>
+                        <li><a href="#about" class="hover:text-amber-400 transition-colors">About Kitchen</a></li>
+                        <li><button onclick="toggleCart()" class="hover:text-amber-400 transition-colors">View Cart & Checkout</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-white text-base mb-4">Contact & Support</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-amber-400 mt-1"></i>
+                            <span>Shop 14, Food Street Plaza, Civil Lines, India</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone-alt text-amber-400"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-amber-400"></i>
+                            <span>orders@tasteofcafe.in</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 Taste Of Cafe. All rights reserved.</p>
+                <p>Built with HTML5, Tailwind CSS & Vanilla JS (MERN Frontend Prototype)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slide-Over Cart Drawer Modal -->
+    <div id="cartModal" class="hidden fixed inset-0 z-50 overflow-hidden">
+        <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+                <!-- Drawer Header -->
+                <div class="px-6 py-5 bg-slate-900 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fas fa-shopping-bag text-amber-400"></i>
+                        <h3 class="font-display font-bold text-lg">Your Food Cart (<span id="cartItemCount">0</span>)</h3>
+                    </div>
+                    <button onclick="toggleCart()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-colors">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic Cart Items -->
+                </div>
+
+                <!-- Cart Bill Summary Footer -->
+                <div id="cartFooter" class="p-6 bg-slate-50 border-t border-slate-200">
+                    <div class="space-y-2 text-sm mb-4">
+                        <div class="flex justify-between text-slate-600">
+                            <span>Item Subtotal</span>
+                            <span id="cartSubtotal" class="font-medium text-slate-900">₹0</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>Delivery Partner Fee</span>
+                            <span id="deliveryFee" class="font-medium text-emerald-600">FREE</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>GST & Restaurant Charges (5%)</span>
+                            <span id="cartTax" class="font-medium text-slate-900">₹0</span>
+                        </div>
+                        <div class="pt-2.5 border-t border-slate-200 flex justify-between items-center">
+                            <span class="font-display font-bold text-base text-slate-900">Grand Total</span>
+                            <span id="cartTotal" class="font-display font-extrabold text-xl text-amber-600">₹0</span>
+                        </div>
+                    </div>
+
+                    <button onclick="showCheckout()" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-sm shadow-lg shadow-orange-500/20 transition-all flex items-center justify-center gap-2">
+                        <span>Proceed to Checkout</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout & Order Confirmation Modal -->
+    <div id="checkoutModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+            <div class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity" onclick="closeCheckout()"></div>
+
+            <div class="relative inline-block w-full max-w-lg bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all my-8">
+                <!-- Modal Top Bar -->
+                <div class="px-6 py-5 bg-slate-900 text-white flex items-center justify-between">
+                    <h3 class="font-display font-bold text-lg">Complete Your Order</h3>
+                    <button onclick="closeCheckout()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Delivery & Payment Form -->
+                <form id="checkoutForm" class="p-6 space-y-4">
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-3.5 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-amber-900 uppercase tracking-wider">Amount Payable</span>
+                        <span id="checkoutPayableAmount" class="font-display font-extrabold text-lg text-amber-700">₹0</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Full Name *</label>
+                        <input type="text" id="customerName" required placeholder="e.g., Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Mobile Number *</label>
+                        <input type="tel" id="phone" required placeholder="e.g., +91 98765 43210" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Complete Delivery Address *</label>
+                        <textarea id="address" rows="2" required placeholder="House/Flat No., Street, Landmark, City" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Select Payment Mode</label>
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <button type="button" onclick="selectPayment('UPI (GPay / PhonePe)', this)" class="payment-method active p-3 rounded-xl border-2 border-amber-500 bg-amber-50 text-center transition-all">
+                                <i class="fas fa-mobile-alt text-lg text-amber-600 mb-1 block"></i>
+                                <span class="text-xs font-bold text-slate-800 block">UPI / QR</span>
+                            </button>
+                            <button type="button" onclick="selectPayment('Credit / Debit Card', this)" class="payment-method p-3 rounded-xl border-2 border-slate-200 hover:border-amber-300 text-center transition-all">
+                                <i class="fas fa-credit-card text-lg text-slate-600 mb-1 block"></i>
+                                <span class="text-xs font-bold text-slate-800 block">Card</span>
+                            </button>
+                            <button type="button" onclick="selectPayment('Cash on Delivery', this)" class="payment-method p-3 rounded-xl border-2 border-slate-200 hover:border-amber-300 text-center transition-all">
+                                <i class="fas fa-rupee-sign text-lg text-slate-600 mb-1 block"></i>
+                                <span class="text-xs font-bold text-slate-800 block">Cash (COD)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="placeOrderBtn" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-lg transition-all mt-2">
+                        Confirm & Place Order
+                    </button>
+                </form>
+
+                <!-- Order Success Receipt View -->
+                <div id="orderSuccess" class="hidden p-8 text-center">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-3xl mb-4">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-extrabold text-slate-900">Order Confirmed!</h3>
+                    <p class="text-sm text-slate-500 mt-1">Thank you, <span id="receiptCustomer" class="font-semibold text-slate-800">Guest</span>! Our chef has started preparing your order.</p>
+
+                    <div class="my-6 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left space-y-2 text-xs">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Order ID:</span>
+                            <span id="receiptOrderId" class="font-mono font-bold text-slate-900">#TOC-84920</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Payment Mode:</span>
+                            <span id="receiptPaymentMode" class="font-semibold text-slate-800">UPI / QR</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Estimated Arrival:</span>
+                            <span class="font-semibold text-emerald-600">25 – 35 Mins</span>
+                        </div>
+                    </div>
+
+                    <button onclick="resetApp()" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm transition-colors">
+                        Order More Food
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <script>
+        // Reliable Fallback SVG Placeholder in case any network image fails
+        const FALLBACK_IMG = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80";
+
+        // Menu Dataset with Unique IDs (1-9), INR Pricing, Veg/Non-Veg Tags & High-Res Unsplash Images
+        const menuItems = [
+            {
+                id: 1,
+                name: "Margherita Cheese Pizza",
+                category: "Italian & Asian",
+                price: 299,
+                isVeg: true,
+                rating: 4.8,
+                prepTime: "20 min",
+                description: "Wood-fired sourdough crust topped with San Marzano tomato sauce, fresh mozzarella & basil.",
+                image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 2,
+                name: "Hyderabadi Chicken Dum Biryani",
+                category: "Indian",
+                price: 349,
+                isVeg: false,
+                rating: 4.9,
+                prepTime: "25 min",
+                description: "Aromatic long-grain basmati rice slow-cooked with tender marinated chicken, saffron & raita.",
+                image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 3,
+                name: "Classic Crispy Double Burger",
+                category: "Fast Food",
+                price: 179,
+                isVeg: true,
+                rating: 4.6,
+                prepTime: "15 min",
+                description: "Toasted brioche bun loaded with crispy herb patty, cheddar slice, lettuce & smoky house sauce.",
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 4,
+                name: "Spicy Thai Pad Noodles",
+                category: "Italian & Asian",
+                price: 269,
+                isVeg: true,
+                rating: 4.7,
+                prepTime: "20 min",
+                description: "Wok-tossed flat rice noodles with roasted peanuts, bell peppers, bean sprouts & tamarind glaze.",
+                image: "https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 5,
+                name: "Belgian Dark Chocolate Sundae",
+                category: "Desserts",
+                price: 149,
+                isVeg: true,
+                rating: 4.9,
+                prepTime: "10 min",
+                description: "Rich Belgian dark chocolate gelato drizzled with warm fudge sauce & roasted almonds.",
+                image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 6,
+                name: "Peri-Peri Masala French Fries",
+                category: "Fast Food",
+                price: 129,
+                isVeg: true,
+                rating: 4.5,
+                prepTime: "12 min",
+                description: "Golden double-fried potato fingers dusted with zesty peri-peri spice & served with cheese dip.",
+                image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 7,
+                name: "Creamy Alfredo Penne Pasta",
+                category: "Italian & Asian",
+                price: 289,
+                isVeg: true,
+                rating: 4.7,
+                prepTime: "18 min",
+                description: "Al dente penne tossed in velvety parmesan cream sauce, sautéed mushrooms & garlic herbs.",
+                image: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 8,
+                name: "Grilled Paneer Tikka Roll",
+                category: "Fast Food",
+                price: 189,
+                isVeg: true,
+                rating: 4.8,
+                prepTime: "15 min",
+                description: "Char-grilled cottage cheese cubes, pickled onions & mint chutney wrapped in flaky paratha.",
+                image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 9,
+                name: "Street-Style Veg Hakka Noodles",
+                category: "Indian",
+                price: 199,
+                isVeg: true,
+                rating: 4.6,
+                prepTime: "15 min",
+                description: "Smoky wok-fried noodles tossed with julienned veggies, soy garlic sauce & spring onions.",
+                image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        // Application State
+        let cart = [];
+        let activeCategory = "All";
+        let selectedPaymentMethod = "UPI (GPay / PhonePe)";
+
+        // Initialize App on Load
+        document.addEventListener("DOMContentLoaded", () => {
+            loadCartFromStorage();
+            renderMenu();
+            updateCartUI();
+        });
+
+        // Persist Cart in LocalStorage
+        function saveCartToStorage() {
+            try {
+                localStorage.setItem("tasteOfCafe_cart", JSON.stringify(cart));
+            } catch (e) {
+                console.warn("LocalStorage not available:", e);
+            }
+        }
+
+        function loadCartFromStorage() {
+            try {
+                const saved = localStorage.getItem("tasteOfCafe_cart");
+                if (saved) {
+                    cart = JSON.parse(saved);
+                }
+            } catch (e) {
+                cart = [];
+            }
+        }
+
+        // Format Currency in Indian Rupees (INR)
+        function formatINR(amount) {
+            return "₹" + Math.round(amount).toLocaleString("en-IN");
+        }
+
+        // Set Category Filter
+        function setCategory(category) {
+            activeCategory = category;
+            document.querySelectorAll(".category-btn").forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.className = "category-btn active px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap bg-slate-900 text-white shadow-sm transition-all";
+                } else {
+                    btn.className = "category-btn px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap bg-white text-slate-600 border border-slate-200 hover:border-amber-500 transition-all";
+                }
+            });
+            renderMenu();
+        }
+
+        function filterMenu() {
+            renderMenu();
+        }
+
+        function resetFilters() {
+            document.getElementById("searchInput").value = "";
+            setCategory("All");
+        }
+
+        // Render Filtered Menu Cards
+        function renderMenu() {
+            const menuGrid = document.getElementById("menuGrid");
+            const emptyState = document.getElementById("emptyMenuState");
+            const query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+            const filtered = menuItems.filter(item => {
+                const matchesCategory = activeCategory === "All" || item.category === activeCategory;
+                const matchesSearch = item.name.toLowerCase().includes(query) || item.description.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                menuGrid.innerHTML = "";
+                emptyState.classList.remove("hidden");
+                return;
+            }
+
+            emptyState.classList.add("hidden");
+            menuGrid.innerHTML = filtered.map(item => `
+                <div class="group bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden bg-slate-100">
+                            <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            
+                            <!-- Veg / Non-Veg Badge -->
+                            <div class="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg shadow-sm flex items-center gap-1.5">
+                                <span class="w-3.5 h-3.5 border-2 ${item.isVeg ? 'border-emerald-600' : 'border-red-600'} flex items-center justify-center rounded-xs">
+                                    <span class="w-1.5 h-1.5 rounded-full ${item.isVeg ? 'bg-emerald-600' : 'bg-red-600'}"></span>
+                                </span>
+                                <span class="text-[11px] font-bold ${item.isVeg ? 'text-emerald-700' : 'text-red-700'}">${item.isVeg ? 'VEG' : 'NON-VEG'}</span>
+                            </div>
+
+                            <!-- Prep Time Badge -->
+                            <div class="absolute bottom-3 right-3 bg-slate-900/85 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-lg">
+                                <i class="far fa-clock text-amber-400 mr-1"></i>${item.prepTime}
+                            </div>
+                        </div>
+
+                        <div class="p-6 pb-4">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="font-display font-bold text-lg text-slate-900 leading-snug">${item.name}</h3>
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-bold px-2 py-1 rounded-lg shrink-0">
+                                    ${item.rating} <i class="fas fa-star text-[10px]"></i>
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">${item.description}</p>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between gap-4">
+                        <div>
+                            <span class="text-[11px] text-slate-400 block">Price</span>
+                            <span class="font-display font-extrabold text-xl text-slate-900">${formatINR(item.price)}</span>
+                        </div>
+
+                        <button onclick="addToCart(${item.id})" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 active:scale-95 text-slate-950 font-bold text-sm shadow-sm transition-all flex items-center gap-2">
+                            <i class="fas fa-plus text-xs"></i>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        // Cart Actions
+        function addToCart(itemId) {
+            const product = menuItems.find(m => m.id === itemId);
+            if (!product) return;
+
+            const existing = cart.find(c => c.id === itemId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            saveCartToStorage();
+            updateCartUI();
+            showToast(`${product.name} added to cart!`);
+        }
+
+        function updateQuantity(itemId, delta) {
+            const index = cart.findIndex(c => c.id === itemId);
+            if (index === -1) return;
+
+            cart[index].quantity += delta;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+
+            saveCartToStorage();
+            updateCartUI();
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(c => c.id !== itemId);
+            saveCartToStorage();
+            updateCartUI();
+        }
+
+        // Calculate Totals & Render Cart Drawer
+        function calculateTotals() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = subtotal === 0 || subtotal >= 499 ? 0 : 40;
+            const tax = Math.round(subtotal * 0.05);
+            const grandTotal = subtotal + delivery + tax;
+            return { totalItems, subtotal, delivery, tax, grandTotal };
+        }
+
+        function updateCartUI() {
+            const { totalItems, subtotal, delivery, tax, grandTotal } = calculateTotals();
+
+            document.getElementById("cartCount").textContent = totalItems;
+            document.getElementById("cartItemCount").textContent = totalItems;
+            document.getElementById("cartSubtotal").textContent = formatINR(subtotal);
+            document.getElementById("deliveryFee").textContent = delivery === 0 ? "FREE" : formatINR(delivery);
+            document.getElementById("cartTax").textContent = formatINR(tax);
+            document.getElementById("cartTotal").textContent = formatINR(grandTotal);
+
+            const cartItemsEl = document.getElementById("cartItems");
+            const cartFooterEl = document.getElementById("cartFooter");
+
+            if (cart.length === 0) {
+                cartFooterEl.classList.add("hidden");
+                cartItemsEl.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center py-12">
+                        <div class="w-20 h-20 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-3xl mb-4">
+                            <i class="fas fa-shopping-basket"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-lg text-slate-900">Your cart is empty</h4>
+                        <p class="text-xs text-slate-500 max-w-xs mt-1 mb-6">Looks like you haven't added any delicious dishes yet.</p>
+                        <button onclick="toggleCart()" class="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm transition-colors">
+                            Browse Menu
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            cartFooterEl.classList.remove("hidden");
+            cartItemsEl.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                    <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" class="w-16 h-16 rounded-xl object-cover shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-sm text-slate-900 truncate">${item.name}</h4>
+                        <div class="text-xs text-slate-500 mt-0.5">${formatINR(item.price)} × ${item.quantity}</div>
+                        <div class="font-display font-bold text-sm text-amber-600 mt-1">${formatINR(item.price * item.quantity)}</div>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                        <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-red-500 text-xs transition-colors" title="Remove Item">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <div class="flex items-center bg-white border border-slate-200 rounded-lg overflow-hidden">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-7 h-7 flex items-center justify-center text-slate-600 hover:bg-slate-100 font-bold text-sm">−</button>
+                            <span class="w-7 text-center text-xs font-bold text-slate-900">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-7 h-7 flex items-center justify-center text-slate-600 hover:bg-slate-100 font-bold text-sm">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        // Modal & Navigation Controls
+        function toggleMobileMenu() {
+            document.getElementById("mobileMenu").classList.toggle("hidden");
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById("cartModal");
+            modal.classList.toggle("hidden");
+            updateCartUI();
+        }
+
+        function showCheckout() {
+            if (cart.length === 0) {
+                showToast("Please add at least one item to checkout.", "error");
+                return;
+            }
+            const { grandTotal } = calculateTotals();
+            document.getElementById("checkoutPayableAmount").textContent = formatINR(grandTotal);
+            document.getElementById("cartModal").classList.add("hidden");
+            document.getElementById("checkoutModal").classList.remove("hidden");
+            document.getElementById("checkoutForm").classList.remove("hidden");
+            document.getElementById("orderSuccess").classList.add("hidden");
+        }
+
+        function closeCheckout() {
+            document.getElementById("checkoutModal").classList.add("hidden");
+        }
+
+        function selectPayment(methodName, btnElement) {
+            selectedPaymentMethod = methodName;
+            document.querySelectorAll(".payment-method").forEach(btn => {
+                btn.className = "payment-method p-3 rounded-xl border-2 border-slate-200 hover:border-amber-300 text-center transition-all";
+            });
+            btnElement.className = "payment-method active p-3 rounded-xl border-2 border-amber-500 bg-amber-50 text-center transition-all";
+        }
+
+        // Handle Order Submission
+        document.getElementById("checkoutForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const customerName = document.getElementById("customerName").value.trim() || "Valued Guest";
+            const btn = document.getElementById("placeOrderBtn");
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing Order...';
+
+            setTimeout(() => {
+                const randomOrderNum = Math.floor(10000 + Math.random() * 90000);
+                document.getElementById("receiptCustomer").textContent = customerName;
+                document.getElementById("receiptOrderId").textContent = `#TOC-${randomOrderNum}`;
+                document.getElementById("receiptPaymentMode").textContent = selectedPaymentMethod;
+
+                document.getElementById("checkoutForm").classList.add("hidden");
+                document.getElementById("orderSuccess").classList.remove("hidden");
+
+                btn.disabled = false;
+                btn.textContent = "Confirm & Place Order";
+            }, 900);
+        });
+
+        function resetApp() {
+            cart = [];
+            saveCartToStorage();
+            updateCartUI();
+            document.getElementById("checkoutForm").reset();
+            closeCheckout();
+            showToast("Thank you for ordering with Taste Of Cafe!");
+        }
+
+        // Non-blocking Toast Alert System
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toastContainer");
+            const toast = document.createElement("div");
+            const bgColor = type === "error" ? "bg-red-600" : "bg-slate-900 border border-slate-700";
+            const icon = type === "error" ? "fa-exclamation-circle text-white" : "fa-check-circle text-emerald-400";
+
+            toast.className = `${bgColor} text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 text-sm font-medium transform transition-all duration-300 translate-y-2 opacity-0`;
+            toast.innerHTML = `<i class="fas ${icon}"></i><span>${message}</span>`;
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove("translate-y-2", "opacity-0");
+            });
+
+            setTimeout(() => {
+                toast.classList.add("translate-y-2", "opacity-0");
+                setTimeout(() => toast.remove(), 300);
+            }, 2600);
+        }
+    </script>
+</body>
+
+</html>
